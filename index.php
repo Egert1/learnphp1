@@ -1,41 +1,34 @@
 <?php
 
-$a = 1;
-$a++;
-$a--;
-$a+=2;
-$a-=2;
-$a*=2;
-$a/=2;
-$a%=2;
+class Box {
+    public $height;
+    public $width;
+    public $length;
 
-$a = 'hello' . 'world';
-$a .= 'agahh';
-$array = array(1,2,3,);
-$array = [1,2,3,];
-var_dump($array1[1]);
-$array = [
-    'essa' => 1,
-    'tessa' => 2,
-    'kossa' => 3,
-    2 => 4,
-    'y32yõ',
-    7 => 8.5,
-    true
-];
-var_dump($array['kossa']);
-var_dump($array);
-foreach($array as $key => $value){
-    //echo $key . '=>'. $value . "\n";
-    echo "$key=>$value\n";
+    public function volume(){
+        return $this->height * $this->width * $this->length;
+    }
 }
-$name = 'Egert';
 
-$string = "hello $name\n";
-var_dump($string);
-$char = 'a';
-
-for($i=0;$i<100;$i++){
-    var_dump($char);
-    $char++;
+class MetalBox extends Box {
+    public $weightPerUnit = 10;
+    public function weight(){
+        return $this->volume() * $this->weightPerUnit;
+    }
 }
+
+$num1 = 1;
+$num2 = $num1;
+$num2 = 2;
+var_dump($num1, $num2);
+
+$metal1 = new MetalBox();
+$metal1->height = 1;
+$metal1->width = 2;
+$metal1->length = 3;
+$metal2 = $metal1;
+$metal2->height =2;
+var_dump($metal1->height, $metal2->height);
+
+
+
